@@ -60,6 +60,14 @@ fi
 python3 delete_existed_header.py
 #python delete_unuse_callkit.py
 
+## 4. 统一资源文件目录名称
+
+res_path="Resources"
+
+mv IMKit/Resource IMKit/$res_path
+mv Sticker/Resource Sticker/$res_path
+mv iFlyKit/Resource iFlyKit/$res_path
+
 #sed -i ""  -e 's/[0-9]\.[0-9]\{1,2\}\.[0-9]\{1,2\}/'"$Version"'/' RongCloudOpenSource.podspec
 
 # 第一个替换：修复s.version行
@@ -69,7 +77,7 @@ sed -i '' -E "/s\.version.*=/s/\"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}(\.[0-9]{1,3}
 sed -i '' -E "/kit\.dependency.*RongCloudIM\/IMLib/s/'[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}(\.[0-9]{1,3})?'/'$Version'/g" RongCloudOpenSource.podspec
 
 
-## 4. 提交代码
+## 5. 提交代码
 git status
 git add .
 git commit -m "Release RongCloud SourceCode Version ${Version}"

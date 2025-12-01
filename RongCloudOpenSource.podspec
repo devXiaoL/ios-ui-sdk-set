@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.author             = { "qixinbing" => "https://www.rongcloud.cn/" }
   s.social_media_url   = "https://www.rongcloud.cn/"
   s.platform     = :ios, "9.0"
-  s.source           = { :git => 'https://github.com/rongcloud/ios-ui-sdk-set.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/devXiaoL/ios-ui-sdk-set.git', :tag => s.version.to_s }
   s.requires_arc = true
   s.static_framework = true
   s.pod_target_xcconfig = {
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
   s.subspec 'IMKit' do |kit|
-    kit.resources = "IMKit/Resource/**/*"
+    kit.resources = "IMKit/Resources/*.bundle", "IMKit/Resources/*.lproj", "IMKit/Resources/*.plist", "IMKit/Supporting Files/PrivacyInfo.xcprivacy"
     kit.source_files = 'IMKit/RongIMKit.h','IMKit/**/*.{h,m,c}'
     kit.private_header_files = 'IMKit/Utility/Extension/*.h'
     kit.frameworks = "AssetsLibrary", "MapKit", "ImageIO", "CoreLocation", "SystemConfiguration", "QuartzCore", "OpenGLES", "CoreVideo", "CoreTelephony", "CoreMedia", "CoreAudio", "CFNetwork", "AudioToolbox", "AVFoundation", "UIKit", "CoreGraphics", "SafariServices"
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'RongSticker' do |rs|
-  	rs.resources = "Sticker/Resource/**/*"
+    rs.resources = "Sticker/Resources/*.bundle"
     rs.source_files = 'Sticker/RongSticker.h','Sticker/**/*.{h,m,c}'
     rs.private_header_files = 'Sticker/Extension/*.h','Sticker/Utilities/RCUnzip.h'
     rs.dependency 'RongCloudOpenSource/IMKit'
@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
   s.subspec 'IFly' do |fly|
     fly.libraries = "z"
     fly.frameworks = "AddressBook", "SystemConfiguration", "CoreTelephony", "CoreServices", "Contacts"
-    fly.resources = "iFlyKit/Resource/**/*"
+    fly.resources = "iFlyKit/Resources/*.bundle"
     fly.source_files = 'iFlyKit/RongiFlyKit.h','iFlyKit/**/*.{h,m}'
     fly.dependency 'RongCloudOpenSource/IMKit'
     fly.vendored_frameworks = "iFlyKit/Engine/iflyMSC.framework"

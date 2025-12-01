@@ -20,9 +20,9 @@ function update_sdk(){
         if [ ${build_host} = "rce" ];
         then
                 cp /var/lib/jenkins/jobs/iOS-SDK-Release/builds/${Release_Node}/archive/output/${src_name}_SourceCode_*.zip ./
-        elif [ ${build_host} = "jenkinsdeMac-mini.local" ];
+        elif [ ${build_host} = "langlideMacBook-Pro.local" ];
         then
-                cp /Users/jenkins/archives/iOS-SDK-Release/${Release_Node}/${src_name}_SourceCode_*.zip ./
+                cp /Volumes/HIK7s/Project/Native/iOS-Jenkins/archives/iOS-SDK-Release/${Release_Node}/${src_name}_SourceCode_*.zip ./
         else
                 exit 1
         fi
@@ -57,7 +57,7 @@ fi
 
 ## 3. 删除重复存在的 .h
 
-python delete_existed_header.py
+python3 delete_existed_header.py
 #python delete_unuse_callkit.py
 
 ## 4. 统一管理资源文件
@@ -98,4 +98,3 @@ fi
 
 git tag -a $Version -m $Version
 git push origin $Version
-
